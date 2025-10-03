@@ -1,13 +1,13 @@
-import styles from "./footer.module.css";
+import stylesFooter from "./footer.module.css";
 
 function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.containerFooter}>
-        <div className={styles.footerRow}>
-          <div className={styles.footerLinks}>
+    <footer className={stylesFooter.footer}>
+      <div className={stylesFooter.containerFooter}>
+        <div className={stylesFooter.footerRow}>
+          <div className={stylesFooter.footerLinks}>
             <h4>
-              <span>GAME</span>ZONE
+              <span>ECO</span>TURISMO
             </h4>
             <ul>
               <li>
@@ -21,28 +21,28 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className={styles.footerLinks}>
+          <div className={stylesFooter.footerLinks}>
             <h4>Ayuda</h4>
             <ul>
               <li>
-                <a href="#">Envios</a>
+                <a href="#">Ubicaciones</a>
               </li>
               <li>
-                <a href="#">Preguntas frecuentes</a>
+                <a href="#">Preguntas</a>
               </li>
               <li>
-                <a href="#">Compras</a>
+                <a href="#">Contacto</a>
               </li>
               <li>
-                <a href="#">Pagos</a>
+                <a href="#">Hospedajes</a>
               </li>
             </ul>
           </div>
-          <div className={styles.footerLinks}>
+          <div className={stylesFooter.footerLinks}>
             <h4>Tienda</h4>
             <ul>
               <li>
-                <a href="#">Videojuegos</a>
+                <a href="#">Sitios Ecoturisticos</a>
               </li>
               <li>
                 <a href="#">Plataformas</a>
@@ -52,9 +52,9 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className={styles.footerLinks}>
+          <div className={stylesFooter.footerLinks}>
             <h4>Siguenos</h4>
-            <div className={styles.socialLink}>
+            <div className={stylesFooter.socialLink}>
               <a href="#">
                 <i class="fab fa-facebook-f"></i>
               </a>
