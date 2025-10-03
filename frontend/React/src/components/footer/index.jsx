@@ -56,16 +56,16 @@ function Footer() {
             <h4>Siguenos</h4>
             <div className={stylesFooter.socialLink}>
               <a href="#">
-                <i class="fab fa-facebook-f"></i>
+                <i className="fab fa-facebook-f"></i>
               </a>
               <a href="#">
-                <i class="fab fa-instagram"></i>
+                <i className="fab fa-instagram"></i>
               </a>
               <a href="#">
-                <i class="fab fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </a>
               <a href="#">
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
           </div>
