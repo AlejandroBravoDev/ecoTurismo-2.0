@@ -2,6 +2,7 @@ import React, { Suspense, useState } from "react";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import MapaOverlay from "./components/mapa/mapaOverlay";
+import Slider from "./components/slider";
 import styles from "./components/mapa/mapaOverlay.module.css";
 
 const LazyMapaRisaralda = React.lazy(() =>
@@ -37,7 +38,7 @@ function App() {
           </Suspense>
         </div>
       </div>
-
+      <Slider />
       <Footer />
     </div>
   );
