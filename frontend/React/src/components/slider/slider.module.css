@@ -162,6 +162,10 @@
     flex-basis: 100%;
     min-width: 100%;
   }
+  .titleSegundasection {
+    font-size: 18px;
+    padding: 0 5px;
+  }
   .overlay {
     opacity: 1;
     transform: translateY(0);
