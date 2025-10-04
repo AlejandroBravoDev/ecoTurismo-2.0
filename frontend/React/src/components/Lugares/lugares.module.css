@@ -1,0 +1,21 @@
+.SearchContainer {
+  height: 45vh;
+  width: 100%;
+  background-color: white;
+  margin: 0;
+  border-top-left-radius: 20em; /* esquina superior izquierda redondeada */
+  border-top-right-radius: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 14em;
+}
+
+.Background {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  position: relative;
+  margin-top: -20px;
+}

@@ -1,46 +1,18 @@
-import React, { Suspense, useState } from "react";
-import Footer from "./components/footer";
-import Header from "./components/header";
-import MapaOverlay from "./components/mapa/mapaOverlay";
-import Slider from "./components/slider";
-import styles from "./components/mapa/mapaOverlay.module.css";
-
-const LazyMapaRisaralda = React.lazy(() =>
-  import("./components/mapa/mapaRisaralda")
-);
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import PerfilUser from "./pages/PerfilUser.jsx";
 
 function App() {
-  const [isOverlayVisible, setIsOverlayVisible] = useState(true);
-  const handleOverlayClick = () => {
-    setIsOverlayVisible(false);
-  };
-
-  const mapOpacityClass = isOverlayVisible ? styles.opaco : styles.visibleMap;
-
   return (
-    <div className="app">
-      <Header />
-      <div
-        className={styles.mapContainerWrapper}
-        style={{
-          height: "600px",
-          position: "relative",
-        }}
-      >
-        <MapaOverlay
-          isVisible={isOverlayVisible}
-          onClick={handleOverlayClick}
-        />
-
-        <div className={`${styles.mapWrapper} ${mapOpacityClass}`}>
-          <Suspense fallback={<div>Cargando mapa...</div>}>
-            <LazyMapaRisaralda />
-          </Suspense>
-        </div>
+    <BrowserRouter>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/perfil" element={<PerfilUser />} />
+        </Routes>
       </div>
-      <Slider />
-      <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import stylesHeader from "./header.module.css";
 import usuarioDemo from "../../assets/usuarioDemo.png";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,12 +18,12 @@ function Header() {
 
       <header className={stylesHeader.header}>
         <div className={stylesHeader.containerLogo}>
-          <a href="#">
+          <Link to="/">
             <h1>
               <span className={stylesHeader.titleSpan}>ECO TURISMO</span>
               RISARALDA
             </h1>
-          </a>
+          </Link>
         </div>
 
         <div className={stylesHeader.iconAndMenuWrapper}>
@@ -52,15 +53,15 @@ function Header() {
           >
             <ul className={stylesHeader.navList}>
               <li>
-                <a href="#">Lugares</a>
+                <Link to="">Lugares</Link>
               </li>
               <li>
-                <a href="#">Hospedajes</a>
+                <Link to="">Hospedajes</Link>
               </li>
               <li className={stylesHeader.profileLink}>
-                <a href="#">
+                <Link to="/perfil">
                   <img src={usuarioDemo} alt="Perfil de Usuario" />
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
