@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import data from "../../municipios.json"; // Importamos el JSON
+import data from "./municipios.json"; // Importamos el JSON
 
 function SelectorMunicipios() {
   const [selected, setSelected] = useState(null);

@@ -53,7 +53,7 @@ function Header() {
           >
             <ul className={stylesHeader.navList}>
               <li>
-                <Link to="">Lugares</Link>
+                <Link to="/lugares">Lugares</Link>
               </li>
               <li>
                 <Link to="">Hospedajes</Link>
