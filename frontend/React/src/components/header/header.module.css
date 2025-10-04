@@ -1,22 +1,14 @@
-/*
-======================================================
-1. ESTILOS BASE Y ESCRITORIO (Mobile-First Invertido)
-======================================================
-*/
-
 .header {
   width: 100%;
   height: 80px;
   display: flex;
   background-color: #f3f3f3;
-  /* SOLUCIÓN AL DESBORDAMIENTO: Box-sizing */
   box-sizing: border-box;
   padding: 0 30px;
-  justify-content: space-between; /* Logo a la izquierda, Links a la derecha */
+  justify-content: space-between;
   z-index: 99999;
 }
 
-/* --- LOGO --- */
 .containerLogo {
   display: flex;
   align-items: center;
@@ -38,7 +30,6 @@
   font-weight: 800;
 }
 
-/* --- LINKS / NAVEGACIÓN (Escritorio) --- */
 .containerLinks {
   display: flex;
   justify-content: center;
@@ -74,13 +65,9 @@
   vertical-align: middle;
 }
 
-/* Ocultar el ícono hamburguesa en escritorio por defecto */
 .menuToggle {
   display: none;
 }
-
-/* --- ÍCONO HAMBURGUESA BASADO EN CSS (Líneas base) --- 
-*/
 .hamburgerIcon {
   width: 30px;
   height: 25px;
@@ -101,8 +88,6 @@
   transform-origin: left;
 }
 
-/* --- ANIMACIÓN HAMBURGUESA (Clases dinámicas en JS) --- */
-
 .barTop {
   transform: rotate(45deg);
 }
@@ -116,12 +101,6 @@
   transform: rotate(-45deg);
 }
 
-/*
-======================================================
-2. MEDIA QUERY: TABLETAS Y MÓVILES (Max-width: 768px)
-======================================================
-*/
-
 @media (max-width: 768px) {
   .header {
     padding: 0 15px;
@@ -131,18 +110,15 @@
     font-size: 20px;
   }
 
-  /* --- Menú Hamburguesa (Mostrar botón y ocultar links) --- */
-
   .menuToggle {
-    display: flex; /* Muestra el botón de hamburguesa */
+    display: flex;
     align-items: center;
-    width: 30px; /* Asegura que la caja del ícono sea del tamaño correcto */
+    width: 30px;
     height: 30px;
     z-index: 9999;
   }
 
   .containerLinks {
-    /* Oculto inicialmente: Ocupa toda la pantalla fuera del Header */
     position: fixed;
     top: 80px;
     left: 0;
@@ -157,13 +133,10 @@
     align-items: center;
     z-index: 10;
   }
-
-  /* Estado ACTIVO: Revela el menú deslizándolo */
   .menuOpen {
     transform: translateX(0);
   }
 
-  /* Lista de navegación vertical para móvil */
   .navList {
     flex-direction: column;
     text-align: center;
@@ -174,8 +147,6 @@
   .containerLinks a {
     font-size: 26px;
   }
-
-  /* Ajuste para imagen de perfil en el menú móvil */
   .profileLink img {
     width: 50px;
     height: 50px;
