@@ -1,8 +1,6 @@
-/* --- ESTILOS BASE (DESKTOP) --- (Mismo código que proporcionaste) */
-
 body {
   margin: 0;
-  background-color: #f4f4f4; /* Fondo principal de la página */
+  background-color: #f4f4f4;
 }
 
 .mainContainer {
@@ -20,7 +18,6 @@ body {
   z-index: 1;
 }
 
-/* Capa oscura (Overlay) */
 .heroSection::before {
   content: "";
   position: absolute;
@@ -32,31 +29,25 @@ body {
   z-index: 2;
 }
 
-/* * ESTILO CLAVE: ESTE CONTENEDOR SE EXTIENDE DE BORDE A BORDE
-* Y CONTIENE TODA LA SECCIÓN BLANCA CURVADA.
-*/
 .contentWrapper {
-  width: 100%; /* Ocupa el 100% del viewport width */
-  position: absolute; /* Posicionado absolutamente */
-  bottom: 0; /* Lo fija en la parte inferior del heroSection */
-  transform: translateY(100%); /* Lo desplaza hacia abajo */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
   z-index: 3;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* Ajustamos el margen para que la curva inicie en el lugar correcto */
   margin-top: 50px;
 }
 
 .searchContainer {
   background-color: white;
   padding: 70px 60px;
-  /* La curva que defines: 224px 224px 0 0 */
   border-radius: 224px 224px 0 0;
   text-align: center;
-  /* Ahora sí puede ocupar un ancho grande (max-width) */
   width: 100%;
-  max-width: 1200px; /* Ancho máximo para el contenido interno */
+  max-width: 1200px;
   margin-top: auto;
   display: flex;
   flex-direction: column;
@@ -65,8 +56,6 @@ body {
   position: relative;
   z-index: 4;
 }
-
-/* Nota: El texto y los filtros ahora deben estar centrados dentro del max-width de 1200px. */
 
 .searchContainer h2 {
   font-size: 2.5rem;
@@ -85,7 +74,7 @@ body {
   align-items: center;
   gap: 15px;
   width: 80%;
-  max-width: 700px; /* Asegura que los filtros no sean demasiado anchos */
+  max-width: 700px;
 }
 
 .searchInput {
@@ -131,20 +120,16 @@ body {
   font-weight: bold;
 }
 
-/* --- SECCIÓN DE TARJETAS (HOSPEDAJES) --- */
-
 .cardsSection {
-  background-color: white; /* CLAVE: Extiende el fondo blanco del buscador */
+  background-color: white;
   padding-bottom: 50px;
   padding-top: 50px;
-  /* CLAVE: Ocupa el ancho total del viewport y se alinea con el searchContainer */
   width: 100%;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  /* Aseguramos que se vea sobre el footer */
   z-index: 3;
 }
 
@@ -153,10 +138,8 @@ body {
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  /* Ajuste para un buen espaciado */
   margin: 0 auto;
   padding: 0 20px;
-  /* Quitamos el margen negativo para que las tarjetas inicien donde termina el padding del searchContainer */
   margin-top: 0;
 }
 
@@ -210,11 +193,6 @@ body {
   background-color: #42702f;
 }
 
-/* ================================================= */
-/* --- MEDIA QUERIES: Responsividad --- */
-/* ================================================= */
-
-/* --- Tabletas Grandes y PCs Pequeñas (max-width: 1024px) --- */
 @media (max-width: 1024px) {
   .heroSection {
     height: 400px;
@@ -240,23 +218,19 @@ body {
   }
 
   .card {
-    width: 30%; /* Tres columnas */
-    min-width: 250px; /* Evita que sean demasiado pequeños */
+    width: 30%;
+    min-width: 250px;
   }
   .detailsButton {
     margin-top: 10px;
   }
 }
-
-/* --- Tabletas Pequeñas y Móviles (max-width: 768px) --- */
 @media (max-width: 768px) {
   .heroSection {
     margin-top: 80px;
     height: 550px;
     padding-top: 20px;
   }
-
-  /* Hacemos la curva menos pronunciada */
   .searchContainer {
     padding: 30px 20px;
     border-radius: 80px 80px 0 0;
@@ -265,8 +239,6 @@ body {
   .searchContainer h2 {
     font-size: 1.8rem;
   }
-
-  /* Apilar elementos de búsqueda */
   .searchFilters {
     flex-direction: column;
     width: 95%;
@@ -284,20 +256,18 @@ body {
     justify-content: space-between;
     order: 2;
   }
-
-  /* CAMBIO CLAVE: Mostrar tarjetas en una sola columna, apiladas */
   .cardsContainer {
     padding: 0 15px;
     max-width: 600px;
-    flex-direction: column; /* <-- Tarjetas Verticales */
-    align-items: center; /* Centrar las tarjetas apiladas */
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
   }
 
   .card {
-    width: 90%; /* Ocupa casi todo el ancho disponible para móvil/tableta */
-    min-width: 280px; /* Asegura un tamaño mínimo legible */
-    max-width: 350px; /* Limita el ancho en tabletas */
+    width: 90%;
+    min-width: 280px;
+    max-width: 350px;
     padding-bottom: 15px;
   }
 
@@ -308,8 +278,6 @@ body {
     margin-top: 10px;
   }
 }
-
-/* --- Móviles (max-width: 480px) --- (Aseguramos que siga vertical) */
 @media (max-width: 480px) {
   .heroSection {
     height: 500px;
@@ -329,7 +297,6 @@ body {
     padding: 0 10px;
   }
 
-  /* Las tarjetas ya están en columna desde 768px, solo ajustamos el ancho */
   .cardsContainer {
     flex-direction: column;
     align-items: center;
