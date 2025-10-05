@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SearchBarStyles from "./lugares.module.css";
 import data from "./municipios.json"; // Importamos el JSON
 
 function SelectorMunicipios() {
@@ -11,18 +12,31 @@ function SelectorMunicipios() {
   };
 
   return (
-    <div>
-      <input type="search" />
-      <select onChange={handleChange} defaultValue="">
-        <option value="" disabled>
-          -- Selecciona --
-        </option>
-        {data.Municipios.map((muni) => (
-          <option key={muni.id} value={muni.id}>
-            {muni.nombre}
+    <div className={SearchBarStyles.searchBarContainer}>
+      <h1>¿A donde deseas ir?</h1>
+      <p>Descubre los mejores lugares ecoturisticos de Risaralda</p>
+
+      <div className={SearchBarStyles.searchBar}>
+        <input
+          type="search"
+          className={SearchBarStyles.bar}
+          placeholder="Buscar"
+        />
+        <select
+          onChange={handleChange}
+          defaultValue=""
+          className={SearchBarStyles.filter}
+        >
+          <option value="" disabled>
+            Selecciona
           </option>
-        ))}
-      </select>
+          {data.Municipios.map((muni) => (
+            <option key={muni.id} value={muni.id}>
+              {muni.nombre}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }
