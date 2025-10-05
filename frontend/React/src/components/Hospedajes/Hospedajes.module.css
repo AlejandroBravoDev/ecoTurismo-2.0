@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4; 
+}
+
+.mainContainer {
+  position: relative; 
+}
+
+.heroSection {
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px; 
+}
+
+.searchContainer {
+  background-color: white;
+  padding: 70px 60px;
+  border-radius: 224px 224px 0 0;
+  text-align: center;
+  width: 1000%;
+  max-width: 100%;
+  margin-top: auto; 
+}
+
+.searchContainer h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.searchContainer p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.searchFilters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;  
+  width: 60%;
+  margin-left: 17rem;
+}
+
+.searchInput {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 5px 9px;
+  flex-grow: 1; 
+}
+
+.searchInput input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.searchInput button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.filterButton {
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filterButton span {
+  font-weight: bold;
+}
+
+.cardsSection {
+  background-color: white; 
+  padding-bottom: 50px;
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  flex-wrap: wrap; 
+  max-width: 1200px;
+  margin: 0 auto; 
+}
+
+.card {
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  overflow: hidden; 
+  width: 320px;
+  text-align: center;
+  padding-bottom: 20px; 
+}
+
+.card img {
+  margin-top: 7%;
+  width: 85%;
+  height: 200px;
+  object-fit: cover; 
+  border-radius: 6%;
+}
+
+.cardContent {
+  padding: 15px;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  min-height: 80px; 
+}
+
+
+.detailsButton {
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 13px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.detailsButton:hover {
+  background-color: #45a049; 
+}
