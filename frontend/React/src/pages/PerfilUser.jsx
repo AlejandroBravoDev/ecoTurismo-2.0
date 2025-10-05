@@ -1,15 +1,14 @@
 import React from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import PerfilUsuario from "../components/PerfilUser/index.jsx";
 
 function PerfilUser() {
   return (
     <div className="nueva-interfaz-page">
       <Header />
 
-      <main style={{ padding: "50px", textAlign: "center" }}>
-        <h2>Perfil Usuario</h2>
-      </main>
+      <PerfilUsuario />
       <Footer />
     </div>
   );
