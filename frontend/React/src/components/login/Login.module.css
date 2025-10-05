@@ -1,3 +1,5 @@
+/* --- CAMBIOS CLAVE PARA EL SLIDER ARRASTRABLE --- */
+
 .container {
   display: flex;
   height: 100vh;
@@ -8,9 +10,48 @@
 
 .left {
   flex: 1;
-  background-size: cover;
-  background-position: center;
+  /* CLAVE: Ahora el contenedor debe ser posicionado para superponer los items */
+  position: relative;
+  overflow: hidden;
+  background-color: #eee; /* Fondo de reserva */
+
+  /* Elimina todas las propiedades de scroll y arrastre (overflow-x, scroll-snap-type, cursor) */
 }
+
+.sliderTrack {
+  /* El track ocupa el 100% del contenedor padre */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Quitamos display: flex, ya que las imágenes se apilan */
+}
+
+.sliderItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* CLAVE: Transición de opacidad para el efecto fade */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.sliderItem.active {
+  /* Solo la imagen activa es visible */
+  opacity: 1;
+}
+
+.sliderItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- ESTILOS DEL LADO DERECHO Y FORMULARIO (SIN CAMBIOS) --- */
 
 .right {
   flex: 1;

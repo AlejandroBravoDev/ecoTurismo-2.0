@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./Hospedajes.module.css";
-import Header from "../Header"; 
-import Footer from "../Footer"; 
-import fondoHospedajes from "../../assets/fondo-hospedajes.jpeg"; 
-import imagenCard from "../../assets/fondo-hospedajes.jpeg"; 
+import Header from "../header";
+import Footer from "../footer";
+import fondoHospedajes from "../../assets/img4.jpg";
+import imagenCard from "../../assets/img4.jpg";
+import { Link } from "react-router-dom";
 
 const hospedajesData = [
   {
@@ -11,21 +12,21 @@ const hospedajesData = [
     nombre: "Casa Luz Hospedaje Campestre",
     descripcion:
       "Alberga más de 60 especies de fauna silvestre y exótica, con cerca de 200 individuos, en múltiples bioregiones.",
-    imagen: imagenCard, 
+    imagen: imagenCard,
   },
   {
     id: 2,
     nombre: "Casa Luz Hospedaje Campestre",
     descripcion:
       "Alberga más de 60 especies de fauna silvestre y exótica, con cerca de 200 individuos, en múltiples bioregiones.",
-    imagen: imagenCard, 
+    imagen: imagenCard,
   },
   {
     id: 3,
     nombre: "Casa Luz Hospedaje Campestre",
     descripcion:
       "Alberga más de 60 especies de fauna silvestre y exótica, con cerca de 200 individuos, en múltiples bioregiones.",
-    imagen: imagenCard, 
+    imagen: imagenCard,
   },
 ];
 
@@ -35,7 +36,6 @@ function Hospedajes() {
       <Header />
 
       <div className={styles.mainContainer}>
-        
         <div
           className={styles.heroSection}
           style={{ backgroundImage: `url(${fondoHospedajes})` }}
@@ -71,7 +71,11 @@ function Hospedajes() {
                 <div className={styles.cardContent}>
                   <h3>{hospedaje.nombre}</h3>
                   <p>{hospedaje.descripcion}</p>
-                  <button className={styles.detailsButton}>Ver detalles</button>
+                  <Link to="/verHospedajes">
+                    <button className={styles.detailsButton}>
+                      Ver detalles
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

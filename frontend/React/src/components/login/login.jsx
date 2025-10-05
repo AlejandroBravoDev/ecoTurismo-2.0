@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
-import loginImg from "../../assets/registro-login.jpeg"; 
+
+import img1 from "../../assets/img1.jpg";
+import img2 from "../../assets/img2.jpg";
+import img3 from "../../assets/img3.jpg";
+import img4 from "../../assets/img4.jpg";
+import img5 from "../../assets/img5.jpg";
+import img6 from "../../assets/img6.jpg";
 
 function Login() {
   const [formData, setFormData] = useState({
     correo: "",
     contraseña: "",
   });
-
   const [mensaje, setMensaje] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const sliderImages = [img1, img2, img3, img4, img5, img6];
+  const totalImages = sliderImages.length;
 
   const handleChange = (e) => {
     setFormData({
@@ -26,17 +34,36 @@ function Login() {
       setFormData({ correo: "", contraseña: "" });
     } catch (err) {
       console.error("Error en login:", err);
-      setMensaje("No se pudo iniciar sesión.");
+      setMensaje("No se pudo iniciar sesión. Verifica tus credenciales.");
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === totalImages - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [totalImages]);
+
   return (
     <section className={styles.container}>
-      <div
-        className={styles.left}
-        style={{ backgroundImage: `url(${loginImg})` }}
-      ></div>
-
+      <div className={styles.left}>
+        <div className={styles.sliderTrack}>
+          {sliderImages.map((imgSrc, index) => (
+            <div
+              key={index}
+              className={`${styles.sliderItem} ${
+                index === currentIndex ? styles.active : ""
+              }`}
+            >
+              <img src={imgSrc} alt={`Slider image ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+      </div>
       <div className={styles.right}>
         <div className={styles.formBox}>
           <h2>Iniciar sesión</h2>

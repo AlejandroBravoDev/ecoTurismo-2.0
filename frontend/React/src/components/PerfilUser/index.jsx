@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import styles from "./PerfilUser.module.css";
 
-import placeholderFotoUsuario from "../../assets/usuarioDemo.png";
+import placeholderFotoUsuario from "../../assets/Alejoesgay.jpg";
 import imagenOpinion from "../../assets/img3.jpg";
 import imagenFavorito from "../../assets/img2.jpg";
-import bannerFondo from "../../assets/img1.jpg";
+import bannerFondo from "../../assets/img6.jpg";
+import { FaHeart, FaMapMarkerAlt } from "react-icons/fa";
 
 function PerfilUsuario() {
   const [pestanaActiva, setPestanaActiva] = useState("opiniones");
   const [menuOpcionesAbierto, setMenuOpcionesAbierto] = useState(false);
+  const [hover, setHover] = useState(0);
+  const [rating, setRating] = useState(0);
 
   const alternarMenuOpciones = () => {
     setMenuOpcionesAbierto(!menuOpcionesAbierto);
@@ -45,7 +48,33 @@ function PerfilUsuario() {
                   <div className={styles.metaOpinion}>
                     <h4>{datosUsuario.name}</h4>
                     <p>Sábado, 27 de septiembre • Familia</p>
-                    <p className={styles.calificacionOpinion}>❤️❤️❤️❤️❤️</p>
+                    <div className={styles.heartRating}>
+                      {[...Array(5)].map((_, index) => {
+                        const ratingValue = index + 1;
+                        return (
+                          <label key={index}>
+                            <input
+                              type="radio"
+                              name="rating"
+                              value={ratingValue}
+                              onClick={() => setRating(ratingValue)}
+                              style={{ display: "none" }}
+                            />
+                            <FaHeart
+                              className={styles.heartIcon}
+                              color={
+                                ratingValue <= (hover || rating)
+                                  ? "#4b8236"
+                                  : "#e4e5e9"
+                              }
+                              size={40}
+                              onMouseEnter={() => setHover(ratingValue)}
+                              onMouseLeave={() => setHover(0)}
+                            />
+                          </label>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
                 <div className={styles.accionesOpinion}>

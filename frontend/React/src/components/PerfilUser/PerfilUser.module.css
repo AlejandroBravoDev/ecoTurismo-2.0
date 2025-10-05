@@ -17,7 +17,10 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-
+.heartIcon {
+  width: 15px;
+  height: 15px;
+}
 /* --- Main Profile Container --- */
 .contenedorPrincipalPerfil {
   background-color: white;

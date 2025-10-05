@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import styles from "./VerHospedaje.module.css";
+// Asegúrate de que estas rutas de importación sean correctas
 import Header from "../header";
 import Footer from "../footer";
-import imgMeerkat from "../../assets/img1.jpg";
-import imgLion from "../../assets/img2.jpg";
-import imgParrot from "../../assets/img5.jpg";
-import { FaMapMarkerAlt, FaRegHeart, FaHeart } from "react-icons/fa";
+import imgMeerkat from "../../assets/img4.jpg";
+import imgLion from "../../assets/img6.jpg";
+import imgParrot from "../../assets/img1.jpg";
+import {
+  FaMapMarkerAlt,
+  FaRegHeart,
+  FaHeart,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 import { MdAddPhotoAlternate } from "react-icons/md";
 
 function VerHospedaje() {
@@ -13,6 +20,25 @@ function VerHospedaje() {
   const [hover, setHover] = useState(0);
   const [comment, setComment] = useState("");
   const [opinions, setOpinions] = useState([]);
+
+  // LÓGICA DEL SLIDER
+  const [currentSlide, setCurrentSlide] = useState(0); // Índice de la imagen actual
+
+  const images = [
+    { src: imgMeerkat, alt: "Suricata" },
+    { src: imgLion, alt: "Leona" },
+    { src: imgParrot, alt: "Loro" },
+  ];
+  const totalSlides = images.length;
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  };
+  // FIN LÓGICA DEL SLIDER
 
   const handleSubmit = () => {
     if (comment.trim() === "") return;
@@ -37,22 +63,74 @@ function VerHospedaje() {
             </div>
           </section>
 
+          {/* GALERÍA DE ESCRITORIO (Se oculta en 768px) */}
           <section className={styles.gallery}>
             <div className={styles.mainImage}>
-              <img src={imgMeerkat} alt="Suricata" />
+              <img src={images[0].src} alt={images[0].alt} />
             </div>
             <div className={styles.sideImages}>
-              <img src={imgLion} alt="Leona" />
-              <img src={imgParrot} alt="Loro" />
+              <img src={images[1].src} alt={images[1].alt} />
+              <img src={images[2].src} alt={images[2].alt} />
             </div>
           </section>
+
+          {/* SLIDER DE IMÁGENES (MÓVIL/TABLETA) */}
+          <section className={styles.mobileSlider}>
+            {/* Aplicamos la transformación en línea usando el estado 'currentSlide' */}
+            <div
+              className={styles.sliderTrack}
+              style={{ transform: `translateX(-${currentSlide * 33.3333}%)` }}
+            >
+              {images.map((image, index) => (
+                <div key={index} className={styles.sliderItem}>
+                  <img src={image.src} alt={image.alt} />
+                </div>
+              ))}
+            </div>
+
+            {/* Controles de Navegación */}
+            <button
+              className={`${styles.sliderControl} ${styles.prev}`}
+              onClick={prevSlide}
+            >
+              <FaChevronLeft size={24} />
+            </button>
+            <button
+              className={`${styles.sliderControl} ${styles.next}`}
+              onClick={nextSlide}
+            >
+              <FaChevronRight size={24} />
+            </button>
+
+            {/* Puntos de Navegación */}
+            <div className={styles.sliderDots}>
+              {images.map((_, index) => (
+                <span
+                  key={index}
+                  className={`${styles.dot} ${
+                    index === currentSlide ? styles.activeDot : ""
+                  }`}
+                  onClick={() => setCurrentSlide(index)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* BOTONES DE ACCIÓN PARA MÓVIL/TABLETA (Visible en 768px) */}
+          <div className={styles.mobileActionButtons}>
+            <button className={styles.btnOutline}>Opinión</button>
+            <button className={styles.btnFilled}>
+              <FaRegHeart /> Favoritas
+            </button>
+          </div>
 
           <section className={styles.infoSection}>
             <h3>Acerca de</h3>
             <p>
-              El Bioparque Ukumarí es un parque de flora y fauna con enfoque en conservación.
-              Sus hábitats inmersivos permiten que los animales vivan en condiciones similares
-              a su entorno natural. Ideal para aprender sobre biodiversidad y disfrutar la naturaleza.
+              El Bioparque Ukumarí es un parque de flora y fauna con enfoque en
+              conservación. Sus hábitats inmersivos permiten que los animales
+              vivan en condiciones similares a su entorno natural. Ideal para
+              aprender sobre biodiversidad y disfrutar la naturaleza.
             </p>
 
             <div className={styles.location}>
@@ -60,7 +138,8 @@ function VerHospedaje() {
               <div className={styles.locationText}>
                 <h3>Ubicado en</h3>
                 <p>
-                  Kilómetro 14 vía Pereira - Cerritos, entrada por la Estación de Servicio Santa Bárbara, Pereira, Risaralda, Colombia
+                  Kilómetro 14 vía Pereira - Cerritos, entrada por la Estación
+                  de Servicio Santa Bárbara, Pereira, Risaralda, Colombia
                 </p>
               </div>
             </div>
@@ -100,7 +179,9 @@ function VerHospedaje() {
                     />
                     <FaHeart
                       className={styles.heartIcon}
-                      color={ratingValue <= (hover || rating) ? "#4CAF50" : "#e4e5e9"}
+                      color={
+                        ratingValue <= (hover || rating) ? "#4b8236" : "#e4e5e9"
+                      }
                       size={40}
                       onMouseEnter={() => setHover(ratingValue)}
                       onMouseLeave={() => setHover(0)}
@@ -124,7 +205,7 @@ function VerHospedaje() {
                   <p>{op.comment}</p>
                   <div className={styles.opinionRating}>
                     {[...Array(op.rating)].map((_, idx) => (
-                      <FaHeart key={idx} color="#4CAF50" />
+                      <FaHeart key={idx} color="#4b8236" />
                     ))}
                   </div>
                 </div>

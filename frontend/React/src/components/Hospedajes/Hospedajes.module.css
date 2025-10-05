@@ -1,11 +1,12 @@
+/* --- ESTILOS BASE (DESKTOP) --- (Mismo código que proporcionaste) */
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4; 
+  background-color: #f4f4f4; /* Fondo principal de la página */
 }
 
 .mainContainer {
-  position: relative; 
+  position: relative;
 }
 
 .heroSection {
@@ -14,18 +15,58 @@ body {
   background-position: center;
   display: flex;
   justify-content: center;
-  padding-top: 50px; 
+  padding-top: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Capa oscura (Overlay) */
+.heroSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+
+/* * ESTILO CLAVE: ESTE CONTENEDOR SE EXTIENDE DE BORDE A BORDE
+* Y CONTIENE TODA LA SECCIÓN BLANCA CURVADA.
+*/
+.contentWrapper {
+  width: 100%; /* Ocupa el 100% del viewport width */
+  position: absolute; /* Posicionado absolutamente */
+  bottom: 0; /* Lo fija en la parte inferior del heroSection */
+  transform: translateY(100%); /* Lo desplaza hacia abajo */
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Ajustamos el margen para que la curva inicie en el lugar correcto */
+  margin-top: 50px;
 }
 
 .searchContainer {
   background-color: white;
   padding: 70px 60px;
+  /* La curva que defines: 224px 224px 0 0 */
   border-radius: 224px 224px 0 0;
   text-align: center;
-  width: 1000%;
-  max-width: 100%;
-  margin-top: auto; 
+  /* Ahora sí puede ocupar un ancho grande (max-width) */
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo para el contenido interno */
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 4;
 }
+
+/* Nota: El texto y los filtros ahora deben estar centrados dentro del max-width de 1200px. */
 
 .searchContainer h2 {
   font-size: 2.5rem;
@@ -35,24 +76,26 @@ body {
 .searchContainer p {
   color: #666;
   margin-bottom: 30px;
+  font-size: 1rem;
 }
 
 .searchFilters {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;  
-  width: 60%;
-  margin-left: 17rem;
+  gap: 15px;
+  width: 80%;
+  max-width: 700px; /* Asegura que los filtros no sean demasiado anchos */
 }
 
 .searchInput {
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
-  border-radius: 25px;
+  border-radius: 8px;
   padding: 5px 9px;
-  flex-grow: 1; 
+  flex-grow: 1;
+  background-color: white;
 }
 
 .searchInput input {
@@ -72,47 +115,66 @@ body {
 
 .filterButton {
   border: 1px solid #ccc;
-  border-radius: 25px;
+  border-radius: 8px;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #f9f9f9;
+  background-color: white;
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
+  font-weight: 500;
+  color: #555;
 }
 
 .filterButton span {
   font-weight: bold;
 }
 
+/* --- SECCIÓN DE TARJETAS (HOSPEDAJES) --- */
+
 .cardsSection {
-  background-color: white; 
+  background-color: white; /* CLAVE: Extiende el fondo blanco del buscador */
   padding-bottom: 50px;
+  padding-top: 50px;
+  /* CLAVE: Ocupa el ancho total del viewport y se alinea con el searchContainer */
+  width: 100%;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  /* Aseguramos que se vea sobre el footer */
+  z-index: 3;
 }
 
 .cardsContainer {
   display: flex;
   justify-content: center;
-  gap: 30px; 
-  flex-wrap: wrap; 
-  max-width: 1200px;
-  margin: 0 auto; 
+  gap: 30px;
+  flex-wrap: wrap;
+  /* Ajuste para un buen espaciado */
+  margin: 0 auto;
+  padding: 0 20px;
+  /* Quitamos el margen negativo para que las tarjetas inicien donde termina el padding del searchContainer */
+  margin-top: 0;
 }
 
 .card {
   background-color: #f9f9f9;
   border-radius: 15px;
-  overflow: hidden; 
+  overflow: hidden;
   width: 320px;
   text-align: center;
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .card img {
   margin-top: 7%;
   width: 85%;
   height: 200px;
-  object-fit: cover; 
+  object-fit: cover;
   border-radius: 6%;
 }
 
@@ -129,12 +191,11 @@ body {
   color: #555;
   font-size: 0.9rem;
   line-height: 1.4;
-  min-height: 80px; 
+  min-height: 80px;
 }
 
-
 .detailsButton {
-  background-color: #4CAF50; 
+  background-color: #4b8236;
   color: white;
   border: none;
   padding: 12px 25px;
@@ -146,5 +207,147 @@ body {
 }
 
 .detailsButton:hover {
-  background-color: #45a049; 
+  background-color: #42702f;
+}
+
+/* ================================================= */
+/* --- MEDIA QUERIES: Responsividad --- */
+/* ================================================= */
+
+/* --- Tabletas Grandes y PCs Pequeñas (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+  .heroSection {
+    height: 400px;
+  }
+
+  .searchContainer {
+    padding: 40px 30px;
+    max-width: 750px;
+    border-radius: 150px 150px 0 0;
+  }
+
+  .searchContainer h2 {
+    font-size: 2rem;
+  }
+
+  .searchFilters {
+    width: 90%;
+  }
+
+  .cardsContainer {
+    max-width: 800px;
+    gap: 20px;
+  }
+
+  .card {
+    width: 30%; /* Tres columnas */
+    min-width: 250px; /* Evita que sean demasiado pequeños */
+  }
+  .detailsButton {
+    margin-top: 10px;
+  }
+}
+
+/* --- Tabletas Pequeñas y Móviles (max-width: 768px) --- */
+@media (max-width: 768px) {
+  .heroSection {
+    margin-top: 80px;
+    height: 550px;
+    padding-top: 20px;
+  }
+
+  /* Hacemos la curva menos pronunciada */
+  .searchContainer {
+    padding: 30px 20px;
+    border-radius: 80px 80px 0 0;
+  }
+
+  .searchContainer h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Apilar elementos de búsqueda */
+  .searchFilters {
+    flex-direction: column;
+    width: 95%;
+    gap: 10px;
+  }
+
+  .searchInput {
+    width: 100%;
+    order: 1;
+  }
+
+  .filterButton {
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    order: 2;
+  }
+
+  /* CAMBIO CLAVE: Mostrar tarjetas en una sola columna, apiladas */
+  .cardsContainer {
+    padding: 0 15px;
+    max-width: 600px;
+    flex-direction: column; /* <-- Tarjetas Verticales */
+    align-items: center; /* Centrar las tarjetas apiladas */
+    gap: 20px;
+  }
+
+  .card {
+    width: 90%; /* Ocupa casi todo el ancho disponible para móvil/tableta */
+    min-width: 280px; /* Asegura un tamaño mínimo legible */
+    max-width: 350px; /* Limita el ancho en tabletas */
+    padding-bottom: 15px;
+  }
+
+  .card p {
+    min-height: auto;
+  }
+  .detailsButton {
+    margin-top: 10px;
+  }
+}
+
+/* --- Móviles (max-width: 480px) --- (Aseguramos que siga vertical) */
+@media (max-width: 480px) {
+  .heroSection {
+    height: 500px;
+  }
+
+  .searchContainer {
+    padding: 30px 30px;
+    border-radius: 40px 40px 0 0;
+  }
+
+  .searchContainer h2 {
+    font-size: 1.5rem;
+  }
+
+  .searchFilters {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* Las tarjetas ya están en columna desde 768px, solo ajustamos el ancho */
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+  .detailsButton {
+    margin-top: 10px;
+  }
 }

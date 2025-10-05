@@ -19,7 +19,7 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/login" element={<Login />} />
           <Route path="/hospedajes" element={<Hospedajes />} />
-          <Route path="/ver-hospedajes" element={<VerHospedajes />} />
+          <Route path="/verHospedajes" element={<VerHospedajes />} />
         </Routes>
       </div>
     </BrowserRouter>
