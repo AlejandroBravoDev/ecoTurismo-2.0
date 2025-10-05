@@ -1,6 +1,6 @@
 import { useState } from "react";
 import stylesHeader from "./header.module.css";
-import usuarioDemo from "../../assets/usuarioDemo.png";
+import usuarioDemo from "../../assets/Alejoesgay.jpg";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -56,7 +56,7 @@ function Header() {
                 <Link to="/lugares">Lugares</Link>
               </li>
               <li>
-                <Link to="">Hospedajes</Link>
+                <Link to="/hospedajes">Hospedajes</Link>
               </li>
               <li className={stylesHeader.profileLink}>
                 <Link to="/perfil">
