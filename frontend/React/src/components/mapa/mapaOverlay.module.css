@@ -102,6 +102,18 @@
   color: #f3f3f3;
   cursor: pointer;
 }
+
+.popup h3 {
+  color: #4b8236;
+}
+.popup a:visited {
+  color: #4b8236;
+  text-decoration: none;
+}
+.popup a:link {
+  color: #4b8236;
+  text-decoration: none;
+}
 @media (max-width: 882px) {
   .searchBarContainer {
     max-width: 750px;

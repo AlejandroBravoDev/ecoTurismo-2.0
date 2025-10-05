@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-
+import styles from "./mapaOverlay.module.css";
 import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
@@ -22,7 +22,6 @@ const sitiosRisaralda = [
     latitud: 4.8851,
     longitud: -75.5901,
     info: "Reconocidas por sus aguas termales naturales y la imponente cascada. Un lugar de relajación y bienestar en medio del Paisaje Cultural Cafetero.",
-    imagenUrl: "https://ejemplo.com/imagenes/termales_santarosa.jpg",
   },
   {
     id: 2,
@@ -30,7 +29,6 @@ const sitiosRisaralda = [
     latitud: 4.8016,
     longitud: -75.8123,
     info: "El parque de conservación de fauna más grande de América Latina, enfocado en la conservación de especies africanas y autóctonas.",
-    imagenUrl: "https://ejemplo.com/imagenes/ukumari_parque.jpg",
   },
   {
     id: 3,
@@ -38,7 +36,6 @@ const sitiosRisaralda = [
     latitud: 4.708,
     longitud: -75.46,
     info: "Santuario de Fauna y Flora ideal para el senderismo y el avistamiento de aves, hogar de la pava caucana.",
-    imagenUrl: "https://ejemplo.com/imagenes/otun_quimbaya.jpg",
   },
   {
     id: 4,
@@ -46,7 +43,6 @@ const sitiosRisaralda = [
     latitud: 4.9,
     longitud: -75.35,
     info: "Ecosistemas de páramo y alta montaña, con acceso a la Laguna del Otún y rutas al Nevado Santa Isabel. Turismo de aventura y alta montaña.",
-    imagenUrl: "https://ejemplo.com/imagenes/nevados_risaralda.jpg",
   },
   {
     id: 5,
@@ -54,7 +50,6 @@ const sitiosRisaralda = [
     latitud: 5.25,
     longitud: -76.0,
     info: "Una de las áreas mejor conservadas de la Cordillera Occidental. Ofrece senderos como Montezuma para observación especializada de aves.",
-    imagenUrl: "https://ejemplo.com/imagenes/tatama_pueblorico.jpg",
   },
   {
     id: 6,
@@ -62,7 +57,6 @@ const sitiosRisaralda = [
     latitud: 4.9366,
     longitud: -75.7391,
     info: "Ubicado en el hermoso municipio de Marsella, preserva la biodiversidad local y es un tranquilo lugar para el ecoturismo cultural.",
-    imagenUrl: "https://ejemplo.com/imagenes/jardin_marsella.jpg",
   },
   {
     id: 7,
@@ -70,7 +64,6 @@ const sitiosRisaralda = [
     latitud: 5.15,
     longitud: -75.95,
     info: "Municipio con arquitectura típica del PCC. Ofrece pesca deportiva, parapente en el Cerro El Nudo, y experiencias inmersivas en el proceso del café.",
-    imagenUrl: "https://ejemplo.com/imagenes/apia_aventura.jpg",
   },
   {
     id: 8,
@@ -78,7 +71,6 @@ const sitiosRisaralda = [
     latitud: 4.85,
     longitud: -75.58,
     info: "Gran reserva natural compartida por varios municipios, ideal para el senderismo y la observación de la fauna y flora del bosque andino.",
-    imagenUrl: "https://ejemplo.com/imagenes/alto_del_nudo.jpg",
   },
   {
     id: 9,
@@ -86,7 +78,6 @@ const sitiosRisaralda = [
     latitud: 4.9,
     longitud: -75.595,
     info: "Sitio popular para la pesca deportiva, cabalgatas y senderismo en medio de las montañas cafeteras, con alojamiento disponible.",
-    imagenUrl: "https://ejemplo.com/imagenes/trucherasanrafael.jpg",
   },
   {
     id: 10,
@@ -94,7 +85,6 @@ const sitiosRisaralda = [
     latitud: 4.793,
     longitud: -75.72,
     info: "Ubicado en la Universidad Tecnológica de Pereira. Un centro de investigación y conservación, perfecto para caminatas ecológicas y avistamiento.",
-    imagenUrl: "https://ejemplo.com/imagenes/jardin_utp.jpg",
   },
   {
     id: 11,
@@ -102,7 +92,6 @@ const sitiosRisaralda = [
     latitud: 4.95,
     longitud: -75.9,
     info: "Área de gran importancia hídrica y de biodiversidad, que conecta varios ecosistemas. Ideal para el ecoturismo comunitario y la educación ambiental.",
-    imagenUrl: "https://ejemplo.com/imagenes/cuchilla_sanjuan.jpg",
   },
 ];
 
@@ -158,7 +147,7 @@ function MapaRisaralda() {
           icon={GreenIcon}
         >
           <Popup>
-            <div>
+            <div className={styles.popup}>
               <h3>{sitio.nombre}</h3>
               <p>{sitio.info}</p>
               <a href={`/sitio/${sitio.id}`}>Ver más detalles</a>

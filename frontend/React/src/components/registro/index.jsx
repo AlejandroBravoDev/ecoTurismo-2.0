@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Registro.module.css";
-import registroImg from "../../assets/registro-login.jpeg";
+import img1 from "../../assets/img1.jpg";
+import img2 from "../../assets/img2.jpg";
+import img3 from "../../assets/img3.jpg";
+import img4 from "../../assets/img4.jpg";
+import img5 from "../../assets/img5.jpg";
+import img6 from "../../assets/img6.jpg";
 
 function Registro() {
   const [formData, setFormData] = useState({
@@ -11,6 +16,9 @@ function Registro() {
   });
 
   const [mensaje, setMensaje] = useState("");
+  const sliderImages = [img1, img2, img3, img4, img5, img6];
+  const totalImages = sliderImages.length;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleChange = (e) => {
     setFormData({
@@ -30,6 +38,15 @@ function Registro() {
       setMensaje("No se pudo registrar.");
     }
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === totalImages - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [totalImages]);
 
   return (
     <section className={styles.container}>
@@ -76,10 +93,20 @@ function Registro() {
         </div>
       </div>
 
-      <div
-        className={styles.right}
-        style={{ backgroundImage: `url(${registroImg})` }}
-      ></div>
+      <div className={styles.right}>
+        <div className={styles.sliderTrack}>
+          {sliderImages.map((imgSrc, index) => (
+            <div
+              key={index}
+              className={`${styles.sliderItem} ${
+                index === currentIndex ? styles.active : ""
+              }`}
+            >
+              <img src={imgSrc} alt={`Slider image ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

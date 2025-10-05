@@ -20,9 +20,7 @@ function VerHospedaje() {
   const [hover, setHover] = useState(0);
   const [comment, setComment] = useState("");
   const [opinions, setOpinions] = useState([]);
-
-  // LÓGICA DEL SLIDER
-  const [currentSlide, setCurrentSlide] = useState(0); // Índice de la imagen actual
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const images = [
     { src: imgMeerkat, alt: "Suricata" },
@@ -38,7 +36,6 @@ function VerHospedaje() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
-  // FIN LÓGICA DEL SLIDER
 
   const handleSubmit = () => {
     if (comment.trim() === "") return;
@@ -62,8 +59,6 @@ function VerHospedaje() {
               </button>
             </div>
           </section>
-
-          {/* GALERÍA DE ESCRITORIO (Se oculta en 768px) */}
           <section className={styles.gallery}>
             <div className={styles.mainImage}>
               <img src={images[0].src} alt={images[0].alt} />
@@ -74,9 +69,7 @@ function VerHospedaje() {
             </div>
           </section>
 
-          {/* SLIDER DE IMÁGENES (MÓVIL/TABLETA) */}
           <section className={styles.mobileSlider}>
-            {/* Aplicamos la transformación en línea usando el estado 'currentSlide' */}
             <div
               className={styles.sliderTrack}
               style={{ transform: `translateX(-${currentSlide * 33.3333}%)` }}
@@ -87,8 +80,6 @@ function VerHospedaje() {
                 </div>
               ))}
             </div>
-
-            {/* Controles de Navegación */}
             <button
               className={`${styles.sliderControl} ${styles.prev}`}
               onClick={prevSlide}
@@ -102,7 +93,6 @@ function VerHospedaje() {
               <FaChevronRight size={24} />
             </button>
 
-            {/* Puntos de Navegación */}
             <div className={styles.sliderDots}>
               {images.map((_, index) => (
                 <span
@@ -115,8 +105,6 @@ function VerHospedaje() {
               ))}
             </div>
           </section>
-
-          {/* BOTONES DE ACCIÓN PARA MÓVIL/TABLETA (Visible en 768px) */}
           <div className={styles.mobileActionButtons}>
             <button className={styles.btnOutline}>Opinión</button>
             <button className={styles.btnFilled}>
