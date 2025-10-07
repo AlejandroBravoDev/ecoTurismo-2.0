@@ -17,24 +17,35 @@ function SelectorMunicipios() {
       <p>Descubre los mejores lugares ecoturisticos de Risaralda</p>
 
       <div className={SearchBarStyles.searchBar}>
-        <input
+        <div className={SearchBarStyles.searchInput}>
+          <input type="text" placeholder="Buscar" />
+          <button>
+            <i className="fas fa-search"></i> {/* Icono de lupa */}
+          </button>
+        </div>
+
+        {/* <input
           type="search"
           className={SearchBarStyles.bar}
           placeholder="Buscar"
-        />
+        /> */}
         <select
           onChange={handleChange}
           defaultValue=""
           className={SearchBarStyles.filter}
         >
           <option value="" disabled>
-            Selecciona
+            Municipios
           </option>
           {data.Municipios.map((muni) => (
             <option key={muni.id} value={muni.id}>
               {muni.nombre}
             </option>
           ))}
+        </select>
+
+        <select name="" id="" className={SearchBarStyles.filter}>
+          <option value="">Categorias</option>
         </select>
       </div>
     </div>
