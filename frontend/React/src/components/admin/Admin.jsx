@@ -1,5 +1,5 @@
 import adminStyles from "./admin.module.css";
-import data from "./municipios.json";
+import data from "../Lugares/municipios.json";
 import React, { useState } from "react";
 function Admin() {
   const [selected, setSelected] = useState(null);
