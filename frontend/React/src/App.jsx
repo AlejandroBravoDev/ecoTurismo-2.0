@@ -9,6 +9,7 @@ import Registro from "./pages/Registro.jsx";
 import Hospedajes from "./components/Hospedajes/Hospedajes.jsx";
 import VerHospedajes from "./components/ver-hospedajes/ver-hospedajes.jsx";
 import Login from "./components/login/login.jsx";
+import Admin from "./pages/Admin.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/hospedajes" element={<Hospedajes />} />
           <Route path="/verHospedajes" element={<VerHospedajes />} />
           <Route path="/verLugares" element={<VerLugares />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
     </BrowserRouter>

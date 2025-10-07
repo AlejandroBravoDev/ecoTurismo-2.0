@@ -23,12 +23,6 @@ function SelectorMunicipios() {
             <i className="fas fa-search"></i> {/* Icono de lupa */}
           </button>
         </div>
-
-        {/* <input
-          type="search"
-          className={SearchBarStyles.bar}
-          placeholder="Buscar"
-        /> */}
         <select
           onChange={handleChange}
           defaultValue=""
