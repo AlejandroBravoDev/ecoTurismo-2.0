@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./PerfilUser.module.css";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import placeholderFotoUsuario from "../../assets/Alejoesgay.jpg";
 import imagenOpinion from "../../assets/img3.jpg";
 import imagenFavorito from "../../assets/img2.jpg";
@@ -12,6 +13,7 @@ function PerfilUsuario() {
   const [menuOpcionesAbierto, setMenuOpcionesAbierto] = useState(false);
   const [hover, setHover] = useState(0);
   const [rating, setRating] = useState(0);
+  const navigate = useNavigate();
 
   const alternarMenuOpciones = () => {
     setMenuOpcionesAbierto(!menuOpcionesAbierto);
@@ -30,7 +32,29 @@ function PerfilUsuario() {
   const activarModoEdicion = () => {
     setPestanaActiva("editar");
   };
+  const handleLogout = async () => {
+    const token = localStorage.getItem("token");
 
+    // 1. Opcional: Llamar al endpoint de Laravel para revocar el token en el servidor
+    if (token) {
+      try {
+        // Usar la URL /api/logout para que el proxy de Vite funcione
+        await axios.post("/api/logout", null, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Enviar el token
+          },
+        });
+      } catch (error) {
+        // En caso de error (ej. token ya expirado), simplemente ignoramos y limpiamos el frontend.
+        console.warn(
+          "Advertencia: No se pudo revocar el token en el servidor. Limpiando localmente."
+        );
+      }
+    }
+
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   const renderizarContenidoPerfil = () => {
     switch (pestanaActiva) {
       case "opiniones":
@@ -188,21 +212,25 @@ function PerfilUsuario() {
           />
           <div className={styles.bloqueInfoUsuario}>
             <h3>{datosUsuario.name}</h3>
-            <p className={styles.textoEmailUsuario}>
-              @{datosUsuario.email.split("@")[0]}
-            </p>
+            <p className={styles.textoEmailUsuario}>{datosUsuario.email}</p>
             <span className={styles.idCuentaUsuario}>
               ID: {datosUsuario.id}
             </span>
           </div>
-          <button
-            className={`${styles.botonEditarPerfil} ${
-              pestanaActiva === "editar" ? styles.ocultoEnEdicion : ""
-            }`}
-            onClick={activarModoEdicion}
-          >
-            Editar perfil
-          </button>
+          <div className={styles.contenedorAcciones}>
+            <button
+              className={`${styles.botonEditarPerfil} ${
+                pestanaActiva === "editar" ? styles.ocultoEnEdicion : ""
+              }`}
+              onClick={activarModoEdicion}
+            >
+              Editar perfil
+            </button>
+
+            <button className={styles.botonCerrarSesion} onClick={handleLogout}>
+              Cerrar Sesión
+            </button>
+          </div>
         </div>
         <div className={styles.pestanasNavegacionPerfil}>
           <button

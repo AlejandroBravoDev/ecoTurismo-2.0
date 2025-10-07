@@ -7,18 +7,20 @@ import img3 from "../../assets/img3.jpg";
 import img4 from "../../assets/img4.jpg";
 import img5 from "../../assets/img5.jpg";
 import img6 from "../../assets/img6.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Registro() {
   const [formData, setFormData] = useState({
-    nombre: "",
-    correo: "",
-    contraseña: "",
+    nombre_completo: "",
+    email: "",
+    password: "",
   });
 
   const [mensaje, setMensaje] = useState("");
   const sliderImages = [img1, img2, img3, img4, img5, img6];
   const totalImages = sliderImages.length;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -30,12 +32,26 @@ function Registro() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3001/registro", formData);
-      setMensaje(res.data.mensaje);
-      setFormData({ nombre: "", correo: "", contraseña: "" });
+      const res = await axios.post("/api/register", formData);
+      const token = res.data.access_token;
+      localStorage.setItem("token", token);
+
+      setMensaje("¡Registro exitoso! Iniciando sesión automáticamente.");
+      setFormData({ nombre_completo: "", email: "", password: "" });
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
     } catch (err) {
       console.error("Error en registro:", err);
-      setMensaje("No se pudo registrar.");
+      let errorMsg = "No se pudo registrar. Verifica tus datos.";
+      if (err.response?.data?.errors) {
+        const validationErrors = err.response.data.errors;
+        const firstErrorKey = Object.keys(validationErrors)[0];
+        errorMsg = validationErrors[firstErrorKey][0];
+      } else if (err.response?.data?.message) {
+        errorMsg = err.response.data.message;
+      }
+      setMensaje(errorMsg);
     }
   };
   useEffect(() => {
@@ -57,8 +73,8 @@ function Registro() {
             <label>Nombre</label>
             <input
               type="text"
-              name="nombre"
-              value={formData.nombre}
+              name="nombre_completo"
+              value={formData.nombre_completo}
               onChange={handleChange}
               required
             />
@@ -66,8 +82,8 @@ function Registro() {
             <label>Correo</label>
             <input
               type="email"
-              name="correo"
-              value={formData.correo}
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               required
             />
@@ -75,8 +91,8 @@ function Registro() {
             <label>Contraseña</label>
             <input
               type="password"
-              name="contraseña"
-              value={formData.contraseña}
+              name="password"
+              value={formData.password}
               onChange={handleChange}
               required
             />
