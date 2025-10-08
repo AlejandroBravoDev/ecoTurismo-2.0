@@ -1,18 +1,16 @@
 <?php
 namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-class Lugares extends Model
+use Illuminate\Database\Eloquent\Model;
+class Hospedajes extends Model
 {
     use HasFactory;
-    protected $table = 'lugares'; 
+    protected $table = 'hospedajes'; 
     protected $fillable = [
         'nombre',
         'ubicacion',
         'descripcion',
         'imagenes', 
-        'hoteles_cercanos',
-        'recomendaciones',
     ];
     public function comentarios()
     {
