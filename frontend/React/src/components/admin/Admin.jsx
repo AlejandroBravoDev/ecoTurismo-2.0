@@ -1,5 +1,5 @@
 import adminStyles from "./admin.module.css";
-import data from "../Lugares/municipios.json";
+import data from "./municipios.json";
 import React, { useState } from "react";
 function Admin() {
   const [selected, setSelected] = useState(null);
@@ -19,7 +19,7 @@ function Admin() {
           <div className={adminStyles.searchInput}>
             <input type="text" placeholder="Buscar" />
             <button>
-              <i className="fas fa-search"></i> {/* Icono de lupa */}
+              <i className="fas fa-search"></i>
             </button>
           </div>
           <select
