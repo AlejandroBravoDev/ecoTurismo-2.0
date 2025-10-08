@@ -9,6 +9,10 @@
   justify-content: space-between;
   z-index: 99999;
 }
+.headerContainer {
+  z-index: 99999;
+  position: relative;
+}
 
 .containerLogo {
   display: flex;
@@ -44,7 +48,7 @@
   justify-content: center;
   align-items: center;
 }
-.containerLinks a {
+.navList li:not(.profileLink) a {
   text-decoration: none;
   font-size: 20px;
   font-weight: 500;
@@ -53,7 +57,7 @@
   position: relative;
   display: inline-block;
 }
-.containerLinks a::after {
+.navList li:not(.profileLink) a::after {
   content: "";
   position: absolute;
   width: 0;
@@ -65,16 +69,21 @@
   transition: width 0.3s ease-in-out;
   color: #4b8236;
 }
-.containerLinks a:hover::after {
+.navList li:not(.profileLink) a:hover::after {
   width: 100%;
   color: #4b8236;
 }
 
 .containerLinks img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #4b8236;
   vertical-align: middle;
+}
+.profileLink a {
+  text-decoration: none;
 }
 
 .menuToggle {
@@ -163,8 +172,7 @@
     padding: 0;
     margin-top: -100px;
   }
-
-  .containerLinks a {
+  .navList li:not(.profileLink) a {
     font-size: 26px;
     font-weight: 500;
     color: #000000;
@@ -172,7 +180,7 @@
     position: relative;
     display: inline-block;
   }
-  .containerLinks a::after {
+  .navList li:not(.profileLink) a::after {
     content: "";
     position: absolute;
     width: 0;
@@ -183,12 +191,11 @@
     background-color: #4b8236;
     transition: width 0.3s ease-in-out;
   }
-  .containerLinks a:hover::after {
+
+  .navList li:not(.profileLink) a:hover::after {
     width: 100%;
   }
-  .profileLink a {
-    font-size: 0;
-  }
+
   .profileLink {
     position: absolute;
     top: 80px;
@@ -198,9 +205,13 @@
     padding: 0;
     z-index: 999990;
   }
+
   .profileLink img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #4b8236;
   }
 }
 @media (max-width: 468px) {

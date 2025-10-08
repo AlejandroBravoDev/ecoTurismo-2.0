@@ -1,12 +1,15 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Models\Hospedajes; 
+use App\Models\Hospedaje; 
+
 class HospedajeController extends Controller
 {
     public function index() 
     {
-        $hospedajes = Hospedajes::all(); 
+        $hospedajes = Hospedaje::all(); 
+        
         return response()->json($hospedajes); 
     }
 }

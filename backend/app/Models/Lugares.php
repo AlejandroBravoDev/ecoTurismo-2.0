@@ -1,25 +1,10 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Lugares extends Model
 {
-    use HasFactory;
-    protected $table = 'lugares'; 
-    protected $fillable = [
-        'nombre',
-        'ubicacion',
-        'descripcion',
-        'imagenes', 
-        'hoteles_cercanos',
-        'recomendaciones',
-    ];
-    public function comentarios()
-    {
-        return $this->morphMany(Comentario::class, 'comentable');
-    }
-    public function favoritos()
-    {
-        return $this->morphMany(Favoritos::class, 'favoritable');
-    }
+    //
 }
