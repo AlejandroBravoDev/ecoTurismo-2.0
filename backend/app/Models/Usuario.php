@@ -47,4 +47,11 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany(Favorito::class, 'usuario_id'); 
     }
+
+    public function esAdmin()
+    {
+        return $this->rol === 'admin';
+    }
+
+    
 }
