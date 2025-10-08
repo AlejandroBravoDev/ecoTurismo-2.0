@@ -79,7 +79,6 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid #4b8236;
   vertical-align: middle;
 }
 .profileLink a {
@@ -211,7 +210,6 @@
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid #4b8236;
   }
 }
 @media (max-width: 468px) {
